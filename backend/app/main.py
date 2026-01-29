@@ -136,3 +136,8 @@ app.include_router(patients.router, prefix=settings.API_V1_STR + "/patients", ta
 # Mount clinical endpoints at /patients to match hierarchy (e.g. /patients/{id}/admissions)
 app.include_router(clinical.router, prefix=settings.API_V1_STR + "/patients", tags=["clinical"])
 app.include_router(tasks.router, prefix=settings.API_V1_STR + "/tasks", tags=["tasks"])
+
+# Development entry point (only runs when executed directly, not when imported by gunicorn)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)

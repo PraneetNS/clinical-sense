@@ -43,12 +43,19 @@ python -c "import secrets; print(secrets.token_hex(32))"
 - Connect your GitHub repository
 - Railway will auto-detect the `Procfile`
 - Deployment starts automatically
+- Uses gunicorn with 4 uvicorn workers for production
 
 **Render**:
 - Create a new Web Service
 - Connect your repository
 - Build Command: `pip install -r requirements.txt`
 - Start Command: `bash entrypoint.sh`
+- Uses gunicorn with 4 uvicorn workers for production
+
+**Manual Start Command** (if needed):
+```bash
+gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+```
 
 ### 4. Run Migrations
 

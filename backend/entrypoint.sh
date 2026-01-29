@@ -5,6 +5,13 @@ set -e
 echo "Running database migrations..."
 python -m alembic upgrade head
 
-echo "Starting application..."
+echo "Starting application with gunicorn + uvicorn workers..."
 # Port is provided by environment ($PORT)
-uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Use 4 workers for production (adjust based on your server resources)
+gunicorn app.main:app \
+  --workers 4 \
+  --worker-class uvicorn.workers.UvicornWorker \
+  --bind 0.0.0.0:${PORT:-8000} \
+  --access-logfile - \
+  --error-logfile - \
+  --log-level info
