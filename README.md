@@ -27,7 +27,7 @@ A secure, production-ready AI-powered clinical documentation system built with F
 - Next.js 14 (App Router)
 - TypeScript
 - Tailwind CSS
-- Axios for API calls
+
 
 ## Quick Start (Development)
 
