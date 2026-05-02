@@ -115,14 +115,6 @@ GROQ_API_KEY=<your-groq-key>  # OR OPENAI_API_KEY
 NEXT_PUBLIC_API_URL=<your-backend-url>/api/v1
 ```
 
-## API Documentation
-
-When running in development mode, API docs are available at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
-
-In production, these endpoints are disabled for security.
-
 ## Security Features
 
 - JWT-based authentication with configurable expiration
